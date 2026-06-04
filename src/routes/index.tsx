@@ -1,8 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useCallback } from "react";
+import { useState, useCallback, lazy, Suspense } from "react";
 import { JoinScreen } from "@/components/JoinScreen";
-import { MeetingView } from "@/components/MeetingView";
 import { Toaster } from "@/components/ui/sonner";
+
+const MeetingProviderWrapper = lazy(() =>
+  import("../components/MeetingProviderWrapper")
+);
+
+const authToken = import.meta.env.VITE_VIDEOSDK_TOKEN;
+
+async function createMeeting() {
+  const res = await fetch("https://api.videosdk.live/v2/rooms", {
+    method: "POST",
+    headers: {
+      authorization: authToken,
+      "Content-Type": "application/json",
+    },
+  });
+  const { roomId } = await res.json();
+  return roomId;
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,37 +33,27 @@ export const Route = createFileRoute("/")({
 
 function App() {
   const [meetingId, setMeetingId] = useState<string | null>(null);
-  const [participantIds, setParticipantIds] = useState<string[]>([]);
 
-  const getMeetingAndToken = useCallback((id: string | null) => {
-    // Placeholder: in a real app this would fetch a token from a server
-    const newMeetingId = id ?? Math.random().toString(36).slice(2, 10);
-    setMeetingId(newMeetingId);
-    setParticipantIds([]);
-  }, []);
-
-  const onJoin = useCallback(() => {
-    // Placeholder: populate with dummy participants when joining
-    setParticipantIds(["local-user", "remote-user-1"]);
+  const getMeetingAndToken = useCallback(async (id: string | null) => {
+    const roomId = id ?? (await createMeeting());
+    setMeetingId(roomId);
   }, []);
 
   const onMeetingLeave = useCallback(() => {
     setMeetingId(null);
-    setParticipantIds([]);
   }, []);
 
   return (
     <>
       <Toaster />
       {meetingId ? (
-        <div id="meeting-provider" className="meeting-provider">
-          <MeetingView
+        <Suspense fallback={<div>Loading...</div>}>
+          <MeetingProviderWrapper
             meetingId={meetingId}
+            authToken={authToken}
             onMeetingLeave={onMeetingLeave}
-            onJoin={onJoin}
-            participantIds={participantIds}
           />
-        </div>
+        </Suspense>
       ) : (
         <JoinScreen getMeetingAndToken={getMeetingAndToken} />
       )}

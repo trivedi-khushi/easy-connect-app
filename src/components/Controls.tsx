@@ -1,22 +1,18 @@
-import React from "react";
+import { useMeeting } from "@videosdk.live/react-sdk";
 import { Button } from "@/components/ui/button";
 
 interface ControlsProps {
-  onToggleMic: () => void;
-  onToggleWebcam: () => void;
-  onLeave: () => void;
+  onMeetingLeave: () => void;
 }
 
-export function Controls({ onToggleMic, onToggleWebcam, onLeave }: ControlsProps) {
+export function Controls({ onMeetingLeave }: ControlsProps) {
+  const { toggleMic, toggleWebcam, leave } = useMeeting();
+
   return (
     <div className="flex items-center justify-center gap-3">
-      <Button variant="outline" onClick={onToggleMic}>
-        Mic
-      </Button>
-      <Button variant="outline" onClick={onToggleWebcam}>
-        Webcam
-      </Button>
-      <Button variant="destructive" onClick={onLeave}>
+      <Button variant="outline" onClick={() => toggleMic()}>Mic</Button>
+      <Button variant="outline" onClick={() => toggleWebcam()}>Webcam</Button>
+      <Button variant="destructive" onClick={() => { leave(); onMeetingLeave(); }}>
         Leave
       </Button>
     </div>
