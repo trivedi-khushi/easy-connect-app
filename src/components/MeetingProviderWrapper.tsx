@@ -7,11 +7,7 @@ interface Props {
   onMeetingLeave: () => void;
 }
 
-export default function MeetingProviderWrapper({
-  meetingId,
-  authToken,
-  onMeetingLeave,
-}: Props) {
+export default function MeetingProviderWrapper({ meetingId, authToken, onMeetingLeave }: Props) {
   return (
     <MeetingProvider
       key={meetingId}

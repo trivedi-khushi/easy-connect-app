@@ -10,9 +10,19 @@ export function Controls({ onMeetingLeave }: ControlsProps) {
 
   return (
     <div className="flex items-center justify-center gap-3">
-      <Button variant="outline" onClick={() => toggleMic()}>Mic</Button>
-      <Button variant="outline" onClick={() => toggleWebcam()}>Webcam</Button>
-      <Button variant="destructive" onClick={() => { leave(); onMeetingLeave(); }}>
+      <Button variant="outline" onClick={() => toggleMic()}>
+        Mic
+      </Button>
+      <Button variant="outline" onClick={() => toggleWebcam()}>
+        Webcam
+      </Button>
+      <Button
+        variant="destructive"
+        onClick={() => {
+          leave();
+          onMeetingLeave();
+        }}
+      >
         Leave
       </Button>
     </div>

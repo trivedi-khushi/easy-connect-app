@@ -6,8 +6,7 @@ interface ParticipantTileProps {
 }
 
 export function ParticipantTile({ participantId }: ParticipantTileProps) {
-  const { webcamStream, webcamOn, displayName, isLocal } =
-    useParticipant(participantId);
+  const { webcamStream, webcamOn, displayName, isLocal } = useParticipant(participantId);
 
   const videoRef = useRef<HTMLVideoElement>(null);
 

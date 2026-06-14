@@ -20,11 +20,7 @@ export function JoinScreen({ getMeetingAndToken }: JoinScreenProps) {
         </div>
 
         <div className="space-y-3">
-          <Button
-            className="w-full"
-            size="lg"
-            onClick={() => getMeetingAndToken(null)}
-          >
+          <Button className="w-full" size="lg" onClick={() => getMeetingAndToken(null)}>
             Create New Meeting
           </Button>
 
@@ -33,9 +29,7 @@ export function JoinScreen({ getMeetingAndToken }: JoinScreenProps) {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                or
-              </span>
+              <span className="bg-background px-2 text-muted-foreground">or</span>
             </div>
           </div>
 
