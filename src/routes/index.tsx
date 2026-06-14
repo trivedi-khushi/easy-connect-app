@@ -3,9 +3,7 @@ import { useState, useCallback, lazy, Suspense } from "react";
 import { JoinScreen } from "@/components/JoinScreen";
 import { Toaster } from "@/components/ui/sonner";
 
-const MeetingProviderWrapper = lazy(() =>
-  import("../components/MeetingProviderWrapper")
-);
+const MeetingProviderWrapper = lazy(() => import("../components/MeetingProviderWrapper"));
 
 const authToken = import.meta.env.VITE_VIDEOSDK_TOKEN;
 
@@ -23,10 +21,7 @@ async function createMeeting() {
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Video Chat" },
-      { name: "description", content: "A simple video chat app." },
-    ],
+    meta: [{ title: "Video Chat" }, { name: "description", content: "A simple video chat app." }],
   }),
   component: App,
 });
