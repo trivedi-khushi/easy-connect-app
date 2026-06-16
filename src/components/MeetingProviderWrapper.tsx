@@ -1,13 +1,26 @@
 import { MeetingProvider } from "@videosdk.live/react-sdk";
 import { MeetingView } from "./MeetingView";
+import { useRef } from "react";
 
 interface Props {
   meetingId: string;
   authToken: string;
   onMeetingLeave: () => void;
+  name: string;
 }
 
-export default function MeetingProviderWrapper({ meetingId, authToken, onMeetingLeave }: Props) {
+export default function MeetingProviderWrapper({
+  meetingId,
+  authToken,
+  onMeetingLeave,
+  name,
+}: Props) {
+  const mounted = useRef(false);
+
+  if (mounted.current === false) {
+    mounted.current = true;
+  }
+
   return (
     <MeetingProvider
       key={meetingId}
@@ -15,7 +28,7 @@ export default function MeetingProviderWrapper({ meetingId, authToken, onMeeting
         meetingId,
         micEnabled: true,
         webcamEnabled: true,
-        name: "User",
+        name,
         debugMode: false,
       }}
       token={authToken}

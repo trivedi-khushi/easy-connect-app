@@ -8,5 +8,8 @@ export default defineConfig({
     ssr: {
       noExternal: ["@videosdk.live/react-sdk", "@videosdk.live/js-sdk"],
     },
+    define: {
+      "process.env.NODE_ENV": JSON.stringify("production"),
+    },
   },
 });

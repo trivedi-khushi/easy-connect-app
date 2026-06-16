@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 interface JoinScreenProps {
-  getMeetingAndToken: (meetingId: string | null) => void;
+  getMeetingAndToken: (meetingId: string | null, name: string) => void;
 }
 
 export function JoinScreen({ getMeetingAndToken }: JoinScreenProps) {
   const [meetingIdInput, setMeetingIdInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
+
+  const canProceed = nameInput.trim().length > 0;
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
@@ -20,7 +23,18 @@ export function JoinScreen({ getMeetingAndToken }: JoinScreenProps) {
         </div>
 
         <div className="space-y-3">
-          <Button className="w-full" size="lg" onClick={() => getMeetingAndToken(null)}>
+          <Input
+            placeholder="Your name"
+            value={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
+          />
+
+          <Button
+            className="w-full"
+            size="lg"
+            disabled={!canProceed}
+            onClick={() => getMeetingAndToken(null, nameInput.trim())}
+          >
             Create New Meeting
           </Button>
 
@@ -39,16 +53,16 @@ export function JoinScreen({ getMeetingAndToken }: JoinScreenProps) {
               value={meetingIdInput}
               onChange={(e) => setMeetingIdInput(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && meetingIdInput.trim()) {
-                  getMeetingAndToken(meetingIdInput.trim());
+                if (e.key === "Enter" && meetingIdInput.trim() && canProceed) {
+                  getMeetingAndToken(meetingIdInput.trim(), nameInput.trim());
                 }
               }}
             />
             <Button
-              disabled={!meetingIdInput.trim()}
-              onClick={() => getMeetingAndToken(meetingIdInput.trim())}
+              disabled={!meetingIdInput.trim() || !canProceed}
+              onClick={() => getMeetingAndToken(meetingIdInput.trim(), nameInput.trim())}
             >
-              Join Meeting
+              Join
             </Button>
           </div>
         </div>

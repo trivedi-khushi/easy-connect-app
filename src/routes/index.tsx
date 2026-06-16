@@ -27,15 +27,18 @@ export const Route = createFileRoute("/")({
 });
 
 function App() {
+  const [name, setName] = useState<string>("");
   const [meetingId, setMeetingId] = useState<string | null>(null);
 
-  const getMeetingAndToken = useCallback(async (id: string | null) => {
+  const getMeetingAndToken = useCallback(async (id: string | null, userName: string) => {
+    setName(userName);
     const roomId = id ?? (await createMeeting());
     setMeetingId(roomId);
   }, []);
 
   const onMeetingLeave = useCallback(() => {
     setMeetingId(null);
+    setName("");
   }, []);
 
   return (
@@ -47,6 +50,7 @@ function App() {
             meetingId={meetingId}
             authToken={authToken}
             onMeetingLeave={onMeetingLeave}
+            name={name}
           />
         </Suspense>
       ) : (

@@ -1,7 +1,10 @@
 import { useMeeting } from "@videosdk.live/react-sdk";
+import { useEffect, useRef } from "react";
 import { ParticipantTile } from "./ParticipantTile";
 import { Controls } from "./Controls";
 import { Button } from "@/components/ui/button";
+import { WhiteboardToggle } from "./WhiteboardToggle";
+import { LiveCaptionsToggle } from "./LiveCaptionsToggle";
 
 interface MeetingViewProps {
   meetingId: string;
@@ -9,11 +12,24 @@ interface MeetingViewProps {
 }
 
 export function MeetingView({ meetingId, onMeetingLeave }: MeetingViewProps) {
-  const { join, participants } = useMeeting({
-    onMeetingLeft: () => onMeetingLeave(),
+  const joinedRef = useRef(false);
+
+  const { join, participants, localParticipant } = useMeeting({
+  onMeetingLeft: () => onMeetingLeave(),
+  onMeetingJoined: () => {
+    console.log("meeting joined successfully");
+  },
   });
 
-  const participantIds = [...new Set([...participants.keys()])];
+  useEffect(() => {
+    if (!joinedRef.current) {
+      joinedRef.current = true;
+      setTimeout(() => join(), 1500);
+    }
+  }, []);
+
+  const isMeetingJoined = localParticipant?.id !== undefined;
+  const participantIds = [...participants.keys()];
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -27,15 +43,13 @@ export function MeetingView({ meetingId, onMeetingLeave }: MeetingViewProps) {
         </Button>
       </header>
 
-      {participantIds.length === 0 && (
+      {!isMeetingJoined && (
         <div className="flex-1 flex items-center justify-center">
-          <Button size="lg" onClick={() => join()}>
-            Join
-          </Button>
+          <p className="text-muted-foreground text-sm">Connecting...</p>
         </div>
       )}
 
-      {participantIds.length > 0 && (
+      {isMeetingJoined && (
         <div className="flex-1 overflow-auto p-4">
           <div className="flex flex-wrap gap-4 justify-center">
             {participantIds.map((id) => (
@@ -45,7 +59,14 @@ export function MeetingView({ meetingId, onMeetingLeave }: MeetingViewProps) {
         </div>
       )}
 
-      {participantIds.length > 0 && (
+      {isMeetingJoined && (
+        <div className="px-4 py-2 border-t space-y-2">
+          <WhiteboardToggle />
+          <LiveCaptionsToggle />
+        </div>
+      )}
+
+      {isMeetingJoined && (
         <div className="px-4 py-3 border-t">
           <Controls onMeetingLeave={onMeetingLeave} />
         </div>
