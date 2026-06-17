@@ -10,7 +10,6 @@ A lightweight real-time video conferencing app built with **React** and **[Video
 - Toggle microphone and camera on/off mid-call
 - Multi-participant video grid
 - Leave meeting and return to home screen
--
 
 ## Tech Stack
 
