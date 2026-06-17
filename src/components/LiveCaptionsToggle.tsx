@@ -12,10 +12,7 @@ export function LiveCaptionsToggle() {
       if (data.status === "TRANSCRIPTION_STOPPED") setActive(false);
     },
     onTranscriptionText: (data) => {
-      setCaptions((prev) => [
-        ...prev.slice(-4),
-        `${data.participantName}: ${data.text}`,
-      ]);
+      setCaptions((prev) => [...prev.slice(-4), `${data.participantName}: ${data.text}`]);
     },
   });
 

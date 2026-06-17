@@ -15,10 +15,10 @@ export function MeetingView({ meetingId, onMeetingLeave }: MeetingViewProps) {
   const joinedRef = useRef(false);
 
   const { join, participants, localParticipant } = useMeeting({
-  onMeetingLeft: () => onMeetingLeave(),
-  onMeetingJoined: () => {
-    console.log("meeting joined successfully");
-  },
+    onMeetingLeft: () => onMeetingLeave(),
+    onMeetingJoined: () => {
+      console.log("meeting joined successfully");
+    },
   });
 
   useEffect(() => {

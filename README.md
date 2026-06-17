@@ -11,15 +11,16 @@ A lightweight real-time video conferencing app built with **React** and **[Video
 - Multi-participant video grid
 - Leave meeting and return to home screen
 -
+
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 18 |
-| Video & Audio | VideoSDK.live React SDK |
-| Styling | Tailwind CSS + shadcn/ui |
-| Bundler | Vite |
-| Language | TypeScript |
+| Layer         | Technology               |
+| ------------- | ------------------------ |
+| Frontend      | React 18                 |
+| Video & Audio | VideoSDK.live React SDK  |
+| Styling       | Tailwind CSS + shadcn/ui |
+| Bundler       | Vite                     |
+| Language      | TypeScript               |
 
 ## How It Works
 
@@ -30,6 +31,7 @@ VideoSDK handles all the complex WebRTC infrastructure — signaling, STUN/TURN 
 3. Stream live audio/video between participants in real time
 
 ## Prerequisites
+
 - Node.js 18+
 - A free VideoSDK account → [app.videosdk.live](https://app.videosdk.live)
 
@@ -38,12 +40,14 @@ VideoSDK handles all the complex WebRTC infrastructure — signaling, STUN/TURN 
 Use the following steps to run the project locally:
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/trivedi-khushi/easy-connect-glow.git
 cd easy-connect-glow
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 # or
@@ -51,7 +55,8 @@ yarn install
 ```
 
 3. Setup Environment Variables
-Create a `.env` file in the root directory:
+   Create a `.env` file in the root directory:
+
 ```bash
 touch .env
 ```
@@ -61,11 +66,12 @@ VITE_VIDEOSDK_TOKEN=your_videosdk_auth_token
 
 4. How to get your Token
 
-| Credential | Where to Find It |
-|---|---|
+| Credential            | Where to Find It                                                                         |
+| --------------------- | ---------------------------------------------------------------------------------------- |
 | `VITE_VIDEOSDK_TOKEN` | VideoSDK Dashboard → API Keys → Click the 🔑 icon → Set Role to **RTC** → Generate Token |
 
 5. Run the development server
+
 ```bash
 npm run dev
 ```
@@ -76,9 +82,10 @@ The application will be available at `http://localhost:8080`
 
 ## Configuration
 
-| Variable | Description | Required |
-|---|---|---|
-| `VITE_VIDEOSDK_TOKEN` | VideoSDK authorization token for room creation and joining | Yes |
+| Variable              | Description                                                | Required |
+| --------------------- | ---------------------------------------------------------- | -------- |
+| `VITE_VIDEOSDK_TOKEN` | VideoSDK authorization token for room creation and joining | Yes      |
+
 ## Usage
 
 <img width="596" height="318" alt="Screenshot 2026-06-05 at 5 08 14 AM" src="https://github.com/user-attachments/assets/50d89518-83b1-445e-993d-2a41e03ab135" />
