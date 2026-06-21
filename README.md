@@ -37,10 +37,15 @@ VideoSDK handles all the complex WebRTC infrastructure — signaling, STUN/TURN 
 | `useWhiteboard` | Start/stop collaborative whiteboard session |
 | `useTranscription` | Start/stop live speech-to-text captions |
 
-## Prerequisites
+## Pre-Requisites
 
 - Node.js 18+
 - A free VideoSDK account → [app.videosdk.live](https://app.videosdk.live)
+- A VideoSDK JWT token from the Dashboard → API Keys
+
+## Key Features
+
+
 
 ## Getting Started
 
