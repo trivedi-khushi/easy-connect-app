@@ -2,18 +2,18 @@
 
 A lightweight real-time video conferencing app built with **React** and **[VideoSDK.live](https://videosdk.live)**. Create a meeting room instantly or join an existing one using a Meeting ID — no sign-up required.
 
-## Features
+## Key Features
 
-- Create a new meeting room with one click
-- Join any existing meeting using a Room ID
-- Enter your name before joining — shown to all participants
-- Auto-joins the meeting instantly, no extra click needed
-- Live video streaming for all participants
-- Toggle microphone and camera on/off mid-call
-- Collaborative whiteboard — toggle on/off mid-meeting
-- Live captions — real-time speech transcription for all participants
-- Multi-participant video grid
-- Leave meeting and return to home screen
+| Feature         | Description                                          | Detailed Code & Demo
+| ----------------| ----------------------------------------------------  | ------------------------------------------------------------------------------------------------------- | 
+| 🎙️ Live Captions | Real-time speech transcription in a live meeting    | [Link](https://github.com/trivedi-khushi/WebRTC-Feature-Examples/tree/main/live-transcript) | 
+| 🖊️ Whiteboard    | Collaborative whiteboard embedded in a live meeting | [Link](https://github.com/trivedi-khushi/WebRTC-Feature-Examples/tree/main/whiteboard) | 
+
+## Pre-Requisites
+
+- Node.js 18+
+- A free VideoSDK account → [app.videosdk.live](https://app.videosdk.live)
+- A VideoSDK JWT token from the Dashboard → API Keys
 
 ## Tech Stack
 
@@ -36,19 +36,6 @@ VideoSDK handles all the complex WebRTC infrastructure — signaling, STUN/TURN 
 | `useParticipant`   | Access individual participant's live video/audio stream |
 | `useWhiteboard`    | Start/stop collaborative whiteboard session             |
 | `useTranscription` | Start/stop live speech-to-text captions                 |
-
-## Pre-Requisites
-
-- Node.js 18+
-- A free VideoSDK account → [app.videosdk.live](https://app.videosdk.live)
-- A VideoSDK JWT token from the Dashboard → API Keys
-
-## Key Features
-
-| Feature         | Description                                          | Detailed Code & Demo
-| ----------------| ----------------------------------------------------  | ------------------------------------------------------------------------------------------------------- | 
-| 🎙️ Live Captions | Real-time speech transcription in a live meeting    | [Link](https://github.com/trivedi-khushi/WebRTC-Feature-Examples/tree/main/live-transcript) | 
-| 🖊️ Whiteboard    | Collaborative whiteboard embedded in a live meeting | [Link](https://github.com/trivedi-khushi/WebRTC-Feature-Examples/tree/main/whiteboard) | 
 
 ## Getting Started
 
@@ -100,7 +87,7 @@ The application will be available at `http://localhost:8080`
 
 ## Usage
 
-<img width="596" height="318" alt="Screenshot 2026-06-05 at 5 08 14 AM" src="https://github.com/user-attachments/assets/50d89518-83b1-445e-993d-2a41e03ab135" />
+<img width="566" height="382" alt="Screenshot 2026-06-22 at 1 21 09 AM" src="https://github.com/user-attachments/assets/2837ad7d-6fec-4636-8411-7b1edff1f2e9" />
 
 1. Enter your name on the landing screen
 2. Click **Create New Meeting** — a unique Room ID is generated, and you're joined instantly
