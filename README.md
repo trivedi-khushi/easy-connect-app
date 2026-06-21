@@ -45,10 +45,10 @@ VideoSDK handles all the complex WebRTC infrastructure — signaling, STUN/TURN 
 
 ## Key Features
 
-| Feature         | Description                                          | 
-| ----------------| ----------------------------------------------------  |
-| 🎙️ Live Captions | Real-time speech transcription in a live meeting    | 
-| 🖊️ Whiteboard    | Collaborative whiteboard embedded in a live meeting |
+| Feature         | Description                                          | Detailed Code & Demo
+| ----------------| ----------------------------------------------------  | ------------------------------------------------------------------------------------------------------- | 
+| 🎙️ Live Captions | Real-time speech transcription in a live meeting    | [Link](https://github.com/trivedi-khushi/WebRTC-Feature-Examples/tree/main/live-transcript) | 
+| 🖊️ Whiteboard    | Collaborative whiteboard embedded in a live meeting | [Link](https://github.com/trivedi-khushi/WebRTC-Feature-Examples/tree/main/whiteboard) | 
 
 ## Getting Started
 
