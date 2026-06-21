@@ -29,13 +29,13 @@ A lightweight real-time video conferencing app built with **React** and **[Video
 
 VideoSDK handles all the complex WebRTC infrastructure — signaling, STUN/TURN servers, and media streams. This app uses the following SDK hooks:
 
-| Hook | Purpose |
-|---|---|
-| `MeetingProvider` | Authenticates session and connects to the room |
-| `useMeeting` | Join, leave, toggle mic/camera, read participant list |
-| `useParticipant` | Access individual participant's live video/audio stream |
-| `useWhiteboard` | Start/stop collaborative whiteboard session |
-| `useTranscription` | Start/stop live speech-to-text captions |
+| Hook               | Purpose                                                 |
+| -------------------|---------------------------------------------------------|
+| `MeetingProvider`  | Authenticates session and connects to the room          |
+| `useMeeting`       | Join, leave, toggle mic/camera, read participant list   |
+| `useParticipant`   | Access individual participant's live video/audio stream |
+| `useWhiteboard`    | Start/stop collaborative whiteboard session             |
+| `useTranscription` | Start/stop live speech-to-text captions                 |
 
 ## Pre-Requisites
 
@@ -45,7 +45,10 @@ VideoSDK handles all the complex WebRTC infrastructure — signaling, STUN/TURN 
 
 ## Key Features
 
-
+| Feature         | Description                                          | 
+| ----------------| ----------------------------------------------------  |
+| 🎙️ Live Captions | Real-time speech transcription in a live meeting    | 
+| 🖊️ Whiteboard    | Collaborative whiteboard embedded in a live meeting |
 
 ## Getting Started
 
