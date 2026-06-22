@@ -1,5 +1,5 @@
 import { useMeeting } from "@videosdk.live/react-sdk";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ParticipantTile } from "./ParticipantTile";
 import { Controls } from "./Controls";
 import { Button } from "@/components/ui/button";
@@ -13,11 +13,13 @@ interface MeetingViewProps {
 
 export function MeetingView({ meetingId, onMeetingLeave }: MeetingViewProps) {
   const joinedRef = useRef(false);
+  const [isMeetingJoined, setIsMeetingJoined] = useState(false);
 
-  const { join, participants, localParticipant } = useMeeting({
+  const { join, participants } = useMeeting({
     onMeetingLeft: () => onMeetingLeave(),
     onMeetingJoined: () => {
       console.log("meeting joined successfully");
+      setIsMeetingJoined(true);
     },
   });
 
@@ -28,7 +30,6 @@ export function MeetingView({ meetingId, onMeetingLeave }: MeetingViewProps) {
     }
   }, []);
 
-  const isMeetingJoined = localParticipant?.id !== undefined;
   const participantIds = [...participants.keys()];
 
   return (
