@@ -23,7 +23,7 @@ export function useCaptions() {
 
       lastTimestampRef.current = timestamp;
 
-      setCaptions(prev => {
+      setCaptions((prev) => {
         const last = prev[prev.length - 1];
 
         if (last && lastTypeRef.current === "realtime" && isInterim) {
